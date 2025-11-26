@@ -1,39 +1,77 @@
-# Customer-Behaviour-Analysis
-# Customer Transaction Analyzer (Java)
+# Customer Behaviour Analysis (Java)
 
-This project analyzes customer purchase transactions from a CSV file and identifies:
-- Most frequently purchased item pairs
-- Customer-wise transaction insights
-- Basic analytics from a retail dataset
+This project analyzes customer transactions from a CSV file and identifies:
+- Items purchased together
+- Frequency of item pairs
+- Purchase insights
 
-Each row represents a transaction with:
-- Customer ID  
-- Transaction ID  
-- Items purchased  
-
-Example:
-C001,T001,Milk,Bread,Eggs
-C002,T002,Shampoo,Soap
-
+It reads a CSV file (`transactions.csv`), converts each line into a `Transaction` object, and uses `CustomerAnalyzer` to process the data.
 
 ---
 
-## 🧠 Features Implemented
+# 🚀 How to Run the Project
 
-✔ Reads and parses CSV data  
-✔ Stores each transaction as a `Transaction` object  
-✔ Identifies frequent item pairs  
-✔ Counts occurrences of item pairs  
-✔ Prints customer analytics  
-✔ Uses clean OOP architecture
+### **Step 1 — Navigate to the project**
+cd CustomerAnalysis
 
----
+### **Step 2 — Compile the Java files**
+javac *.java
 
-## 🧪 Technologies Used
+### **Step 3 — Run the main program**
+java Main
 
-- **Java 8+**
+> ⚠️ Make sure `transactions.csv` is inside the **CustomerAnalysis/** folder, because the program reads it from the parent directory by default.
+
+If needed, run with relative path:
+java Main ../transactions.csv
+```
+
+# 🧪 Sample transactions.csv Format
+
+```
+T001,C001,Milk,Bread,Eggs
+T002,C002,Soap,Shampoo
+T003,C001,Bread,Eggs
+T004,C003,Milk,Butter
+T005,C002,Soap,Toothpaste
+```
+# 📤 **Expected Output**
+
+Based on your Java code, the output will look like this:
+
+```
+Reading data from CSV...
+Loaded 5 transactions.
+
+Most Frequently Bought Item Pairs:
+----------------------------------
+Bread, Eggs -> 2
+Milk, Bread -> 1
+Milk, Eggs -> 1
+Soap, Shampoo -> 1
+Soap, Toothpaste -> 1
+Milk, Butter -> 1
+
+Customer-wise Breakdown:
+----------------------------------
+Customer C001:
+   Transactions: 2
+   Items Purchased: [Milk, Bread, Eggs, Bread, Eggs]
+
+Customer C002:
+   Transactions: 2
+   Items Purchased: [Soap, Shampoo, Soap, Toothpaste]
+
+Customer C003:
+   Transactions: 1
+   Items Purchased: [Milk, Butter]
+```
+> The exact numbers change based on your CSV file.  
+> Your program prints item-pairs in descending order of frequency, then prints customer-wise purchase lists.
+
+# 🛠 Technologies Used
+
+- Java 8+
 - File Handling
-- Collections Framework
-- CSV Parsing (manual)
-
----
+- Collections Framework (HashMap, List, Set)
+- CSV parsing (manual logic)
